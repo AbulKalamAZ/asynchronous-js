@@ -1,5 +1,5 @@
 {
-  "name": "asynchronous-js",
+  "name": "asynchronous-jss",
   "version": "1.0.0",
   "description": "This repository will contain few file that demonstrate different topics on Asyncronous Javascript",
   "main": "promise-chaining.js",
