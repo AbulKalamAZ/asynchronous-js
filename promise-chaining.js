@@ -5,7 +5,9 @@
 // NO PROBLEM WITH THIS AND IS KNOWN AS 'PROMISE CHAINING' . LET'S SEE AN EXAMPLE
 
 // const promise = new Promise((resolve, reject) => {
-//   setTimeout(resolve(10), 1000);
+//   setTimeout(() => {
+//    resolve(10)
+//}, 1000);
 // });
 
 // promise
@@ -28,21 +30,54 @@
 
 //NOW WE WILL DISCUSS ABOUT A COMMON MISTAKE MADE BY PEOPLE WHO ARE NEW AT THIS TOPIC. LET'S SEE AND EXAMPLE
 
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//    resolve(100)
+//}, 2000);
+// });
+
+// promise.then(result => {
+//   console.log(result); //prints 100 on the console
+//   return result * 2;
+// });
+
+// promise.then(result => {
+//   console.log(result); //prints 100 but people get confused with 200
+//   return result * 2;
+// });
+
+// promise.then(result => {
+//   console.log(result); //prints 100 but people get confused with 400
+//   return result * 2;
+// });
+
+// HERE ALL THEN() HANDLER IS CONNECTED TO ONE SINGLE PROMISE. SO ALL THEN() HANDLER WILL GET THE SAME VALUE THAT IS
+// 100. IN REAL WORLD EXAMPLE, WE RARELY HAVE MULTIPLE THEN() METHOD TO SINGLE PROMISE. CHAINING IS USED MUCH MORE
+
+// INDISE A THEN() HANDLER, A PROMISE CAN BE CREATED AND RETURNED. IN THAT CASE, THE NEXT THEN() WILL BE WAITING
+// UNTILL THIS PROMSIE IS SETTLED. LET'S HAVE AN EXAMPLE
+
 const promise = new Promise((resolve, reject) => {
-  setTimeout(resolve(100), 2000);
+  setTimeout(() => {
+    resolve(2);
+  }, 1000);
 });
 
-promise.then(result => {
-  console.log(result); //prints 100 on the console
-  return result * 2;
-});
-
-promise.then(result => {
-  console.log(result); //prints 100 but people get confused with 200
-  return result * 2;
-});
-
-promise.then(result => {
-  console.log(result); //prints 100 but people get confused with 400
-  return result * 2;
-});
+promise
+  .then(result => {
+    console.log(result);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(result * 2);
+      }, 2000);
+    });
+  })
+  .then(result => {
+    console.log(result);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(result * 2);
+      }, 3000);
+    });
+  })
+  .then(result => console.log(result));

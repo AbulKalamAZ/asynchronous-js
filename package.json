@@ -1,0 +1,19 @@
+{
+  "name": "asynchronous-js",
+  "version": "1.0.0",
+  "description": "This repository will contain few file that demonstrate different topics on Asyncronous Javascript",
+  "main": "promise-chaining.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbulKalamAZ/asynchronous-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbulKalamAZ/asynchronous-js/issues"
+  },
+  "homepage": "https://github.com/AbulKalamAZ/asynchronous-js#readme"
+}
