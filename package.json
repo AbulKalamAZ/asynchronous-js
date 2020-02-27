@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AbulKalamAZ/asynchronous-js/issues"
   },
-  "homepage": "https://github.com/AbulKalamAZ/asynchronous-js#readme"
+  "homepage": "https://github.com/AbulKalamAZ/asynchronous-js#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
 }
